@@ -1,0 +1,31 @@
+Give answers in swedish to the following questions in a text-file in your repo:
+
+What is OWASP and what is its primary mission as described in the article?
+
+  OWASP, dvs Open Web Application Security Program, är en internationell icke-vinstdrivande organisation dedikerad till säkerhet i web-applikationer. Det sägs att en deras grundläggande principer är att all deras material ska vara gratis och lättillgängligt på deras hemsida. De har allt ifrån dokumentation, verktyg, videos och forum.
+
+Explain the concept of "Injection". Provide an example of how an injection attack could compromise a web application's security.
+
+  “Injection” attacker händer när opålitliga data skickas till kodöversättare genom en “form” eller “input” eller någon annan typ av data-submission. Detta kan t.ex. leda till att angriparen kan exekvera kommandon som kan hämta data, förstöra data, eller manipulera data på olika sätt (t.ex. SQL injection attack). 
+
+Explain two strategies to prevent Broken Authentication vulnerabilities.
+
+  Sårbarheter i login-systemet kan t.ex. ge angriparen åtkomst till användares konton eller åtkomst till hela systemet med admin-konton.
+
+  Två exempel på strategier som kan användas för att försöka förhindra dessa ‘Broken Authentication vulnerabilities’ är att använda sig av ‘two-factor-authentication (2FA)’ eller ‘rate-limiting’. 
+
+  2FA innebär att användaren måste först verifiera sig med anvädarnamn och lösenord, och därefter verifiera sig med att fylla i en kod som skickas på SMS eller till någon applikation. Det sägs (på cloudflare.com) att det inte är omöjligt att infiltrera sig genom 2FA men det är betydligt svårare än att bara ta reda på användarens användarnamn/lösenord. 
+
+  ‘rate-limiting’ begränsar användaren från att logga in flertalet gånger inom kort tid. Detta kan t.ex. förhindra angriparen att använda sig av t.ex. “brute-force login attempts” där de försöker sig på 100-tals olika login-kombinationer i sekunden.
+
+Describe the potential consequences of Insecure Deserialization in web applications. How can developers protect against such attacks?
+
+  ‘Serialization’ innebär att ta objekt ifrån applikationens kod och konvertera de till ett format som kan användas för olika syften, som t.ex. att lagra data på en disk eller att streama det. ‘Deserialization’ är motsatsen, dvs att konvertera “serialized” data tillbaka till objekt som applikation kan använda.
+
+  ‘Insecure deserialization’ kan bli utnyttjad om vi hämtar “deserialized” data ifrån opålitliga källor. T.ex. kan datan se korrekt ut och bli accepterat in i våran applikation, men gömt i koden kan det följa med “DDoS attacks” eller “remote code execution attacks” eller liknande. Det skrivs på cloudflare.com att det finns åtgärder som kan förhindra några av dessa attacker, t.ex. att övervaka koden som importeras och implementera type-checks. Däremot lyckas inte alltid detta, och därför är det främst viktigt att aldrig tillåta “deserializaton” av data ifrån opålitliga källor.
+
+Briefly define Cross-Site Scripting (XSS) as outlined in the article and list two methods suggested in the article to prevent XSS attacks in web applications.
+
+  ‘Cross-site Scripting’ är en attack som kan hända när web-applikationer tillåter användare att lägga till skräddarsydd kod till URL-sökvägen som kan ses av andra användare. Detta kan leda till att angripare kör illvillig kod på en användares webbläsare (t.ex. JavaScript kod som läggs på slutet av URL:n).
+
+  För att försöka förhindra denna typ av attack går det att inte tillåta opålitliga HTTP requests och att försöka validera/sanera skräddarsydd-kod av användare. Förutom detta brukar moderna “web development frameworks” som t.ex. ReactJS och Ruby on Rails ha inbyggda skydd mot cross-site scripting. Med andra ord verkar det smart att använda sig av dessa ramverk för att förminska risken av dessa attacker.
